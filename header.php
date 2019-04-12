@@ -38,7 +38,7 @@ if ( $description || is_customize_preview() ) :
 <?php endif; ?>
 <?php var_dump(has_nav_menu( 'primary' ));?>
 <?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
-  <button id="menu-toggle" class="menu-toggle"><?php _e( 'Menu', 'xfine' ); ?></button>
+  <button id="menu-toggle" class="menu-toggle"><?php _e( TEXT_DOMAIN, TEXT_DOMAIN ); ?></button>
 
   <div id="site-header-menu" class="site-header-menu">
     <?php if ( has_nav_menu( 'primary' ) ) : ?>
@@ -71,3 +71,14 @@ if ( $description || is_customize_preview() ) :
     <?php endif; ?>
   </div><!-- .site-header-menu -->
 <?php endif; ?>
+
+<?php
+if (have_posts()) :
+  while (have_posts()) :
+     the_post();
+     the_content();
+  endwhile;
+endif;
+?>
+
+<?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'container_class' => 'my_extra_menu_class'  ) ); ?>
