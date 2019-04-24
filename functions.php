@@ -9,8 +9,34 @@
  * @since 1.0.0
  */
 
-// 定义文本域
+/**
+ * 主题当前版本
+ * 
+ * @author fanite
+ * @link https://blog.cping.me
+ */
+define('VERSIONS', '1.0.0');
+
+/**
+ * 定义主题的文本域
+ * 
+ * @since 1.0.0
+ */
 define('TEXT_DOMAIN', 'xfine');
+
+/**
+ * 定义翻译文件的路径
+ * 
+ * @since 1.0.0
+ */
+define('LANG_PATH', get_template_directory() . '/languages');
+
+/**
+ * 其他函数的路径
+ * 
+ * @since 1.0.0
+ */
+define('INC_PATH', get_template_directory() . '/inc');
 
 if ( ! function_exists( 'xfine_setup' ) ) :
   function xfine_setup()
