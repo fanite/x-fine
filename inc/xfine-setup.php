@@ -32,4 +32,4 @@ if ( ! function_exists( 'xfine_setup' ) ) :
     add_theme_support( 'post-formats', $post_format );
   }
 endif;
-?>
+add_action( 'after_setup_theme', 'xfine_setup' );

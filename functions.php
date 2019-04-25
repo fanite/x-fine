@@ -15,7 +15,7 @@
  * @author fanite
  * @link https://blog.cping.me
  */
-define('VERSIONS', '1.0.0');
+define('VERSIONS', wp_get_theme()->get( 'Version' ) );
 
 /**
  * 定义主题的文本域
@@ -38,70 +38,11 @@ define('LANG_PATH', get_template_directory() . '/languages');
  */
 define('INC_PATH', get_template_directory() . '/inc');
 
-if ( ! function_exists( 'xfine_setup' ) ) :
-  function xfine_setup()
-  {
-    // 加载翻译
-    load_theme_textdomain( TEXT_DOMAIN, get_template_directory() . '/languages' );
+// 添加主题默认设置
+require( INC_PATH . '/xfine-setup.php' );
 
-    // feed 支持
-    add_theme_support( 'automatic-feed-links' );
-
-    // 添加自定义Logo支持
-    add_theme_support(
-			'custom-logo',
-			array(
-				'height'      => 240,
-				'width'       => 240,
-				'flex-height' => true,
-			)
-    );
-
-    add_theme_support( 'title-tag' );
-
-    add_theme_support( 'post-thumbnails' );
-		set_post_thumbnail_size( 1200, 9999 );
-
-    add_theme_support(
-			'html5',
-			array(
-				'search-form',
-				'comment-form',
-				'comment-list',
-				'gallery',
-				'caption',
-			)
-    );
-    
-    add_theme_support(
-			'post-formats',
-			array(
-				'aside',
-				'image',
-				'video',
-				'quote',
-				'link',
-				'gallery',
-				'status',
-				'audio',
-				'chat',
-			)
-    );
-    
-    // 支持小widgets
-    add_theme_support( 'customize-selective-refresh-widgets' );
-    
-    // This theme uses wp_nav_menu() in two locations.
-    register_nav_menus(
-			array(
-				'primary' => __( '主菜单', TEXT_DOMAIN ),
-				'aside'		=> __( '侧边栏', TEXT_DOMAIN ),
-				'social'  => __( '社交菜单', TEXT_DOMAIN ),
-			)
-		);
-  }
-endif;
-add_action( 'after_setup_theme', 'xfine_setup' );
+// 添加主题样式文件
+require( INC_PATH . '/xfine-css.php' );
 
 // 侧边栏widget
 function xfine_widgets_init() {
@@ -142,13 +83,6 @@ function xfine_widgets_init() {
 	);
 }
 add_action( 'widgets_init', 'xfine_widgets_init' );
-
-function xfine_theme_scripts()
-{
-  wp_enqueue_style( 'xfine-style', get_stylesheet_uri(), array(), wp_get_theme()->get( 'Version' ) );
-}
-add_action( 'wp_enqueue_scripts', 'xfine_theme_scripts' );
-
 
 /**
  * Create the function to output the contents of our Dashboard Widget.
