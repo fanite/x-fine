@@ -39,7 +39,7 @@ define('LANG_PATH', get_template_directory() . '/languages');
 define('INC_PATH', get_template_directory() . '/inc');
 
 // 添加主题默认设置
-require INC_PATH . '/xf-setup.php';
+require INC_PATH . '/xf-init.php';
 
 // 添加主题自定义设置
 require INC_PATH . '/xf-options.php';

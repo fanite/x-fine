@@ -1,12 +1,12 @@
 <?php
-if ( ! function_exists( 'xfine_setup' ) ) :
+if ( ! function_exists( 'xfine_init' ) ) :
   /**
    * xfine 主题的一些默认设置，和注册Wordpress的功能
    * 
    * @since 1.0.0
    * @return void
    */
-  function xfine_setup()
+  function xfine_init()
   {
     // 保存主题版本
     update_option( 'xfine_ver', VERSIONS, true );
@@ -32,4 +32,4 @@ if ( ! function_exists( 'xfine_setup' ) ) :
     add_theme_support( 'post-formats', $post_format );
   }
 endif;
-add_action( 'after_setup_theme', 'xfine_setup' );
+add_action( 'after_setup_theme', 'xfine_init' );
