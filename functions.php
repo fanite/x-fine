@@ -39,10 +39,13 @@ define('LANG_PATH', get_template_directory() . '/languages');
 define('INC_PATH', get_template_directory() . '/inc');
 
 // 添加主题默认设置
-require( INC_PATH . '/xfine-setup.php' );
+require INC_PATH . '/xf-setup.php';
+
+// 添加主题自定义设置
+require INC_PATH . '/xf-options.php';
 
 // 添加主题样式文件
-require( INC_PATH . '/xfine-css.php' );
+require INC_PATH . '/xf-style.php';
 
 // 侧边栏widget
 function xfine_widgets_init() {
